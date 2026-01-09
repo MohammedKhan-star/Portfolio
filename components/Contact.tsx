@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState,ChangeEvent,FormEvent } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -15,40 +15,41 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  setFormData({ ...formData, [e.target.name]: e.target.value });
+};
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-    // Honeypot spam protection
-    if (formData.honeypot) return;
+  if (formData.honeypot) return;
 
-    setLoading(true);
+  setLoading(true);
 
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          message: formData.message,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
-        setStatus("Message sent successfully! I will get back to you soon.");
-        setFormData({ name: "", email: "", message: "", honeypot: "" });
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("EmailJS Error:", error);
-        setStatus("Oops! Something went wrong. Please try again.");
-        setLoading(false);
-      });
-  };
+  emailjs
+    .send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+      {
+        from_name: formData.name,
+        reply_to: formData.email,
+        message: formData.message,
+      },
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+    )
+    .then(() => {
+      setStatus("Message sent successfully! I will get back to you soon.");
+      setFormData({ name: "", email: "", message: "", honeypot: "" });
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.error("EmailJS Error:", error);
+      setStatus("Oops! Something went wrong. Please try again.");
+      setLoading(false);
+    });
+};
 
   return (
     <section id="contact" className="py-24 bg-gray-50 dark:bg-gray-900 px-6">

@@ -1,8 +1,8 @@
 export const skills = [
   { name: "React + Vite", logo: "/skills/vite.png" },
   { name: "React.js", logo: "/skills/reactlogo.png" },
-  { name: "Next.js", logo: "/skills/next.jpg" },
-  { name: "JavaScript", logo: "/skills/javascript.jpg" },
+  { name: "Next.js", logo: "/skills/next.js.png" },
+  { name: "JavaScript", logo: "/skills/javascript.png" },
   { name: "Tailwind CSS", logo: "/skills/tailwind.png" },
   { name: "HTML 5", logo: "/skills/html.png" },
   { name: "CSS 3", logo: "/skills/css.png" },

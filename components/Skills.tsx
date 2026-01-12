@@ -16,7 +16,7 @@ export default function Skills() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold mb-12 text-white"
+          className="text-3xl font-bold mb-12 text-black dark:text-white"
         >
           Technical Skills
         </motion.h2>
@@ -25,10 +25,10 @@ export default function Skills() {
           {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
-              initial={{ opacity: 0, scale: 0.6, y: 40 }}
+              initial={{ opacity: 0, scale: 0.3, y: 40 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{
-                delay: index * 0.15,
+                delay: index * 0.3,
                 type: "spring",
                 stiffness: 120,
               }}

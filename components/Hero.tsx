@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { Github, Download, Mail, Linkedin } from "lucide-react";
+import profilePic from "../public/profile/profile2.png";
+
 
 const roles = [
   "Full Stack Web Developer helping businesses and startups build modern, scalable, and high-performing web applications",
@@ -44,6 +46,15 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
       {/* Name */}
+       <motion.img
+                src="/profile/profile2.png"
+                alt="Mohammed Khan"
+                className="w-48 h-48 rounded-full object-cover border-4 border-blue-500 shadow-lg"
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              />
       <motion.h1
         className="text-4xl md:text-6xl font-bold"
         initial={{ opacity: 0, y: -40, filter: "blur(8px)" }}

@@ -41,7 +41,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-12"
           >
             {/* Category Title */}
             <h3 className="text-xl font-semibold mb-8 text-white/90">
@@ -56,9 +56,9 @@ export default function Skills() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{
-                    delay: index * 0.05,
+                    delay: index * 0.02,
                     type: "spring",
-                    stiffness: 120,
+                    stiffness: 220,
                   }}
                   viewport={{ once: true }}
                   whileHover={{
@@ -76,7 +76,7 @@ export default function Skills() {
                   <Image
                     src={skill.logo}
                     alt={skill.name}
-                    width={120}
+                    width={40}
                     height={60}
                     className="mb-4"
                   />

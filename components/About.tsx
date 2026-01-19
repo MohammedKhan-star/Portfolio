@@ -21,15 +21,7 @@ export default function About() {
 
       <div className="flex flex-col md:flex-row items-center md:items-start gap-10">
         {/* Profile Image */}
-        <motion.img
-          src="/profile/profile2.png"
-          alt="Mohammed Khan"
-          className="w-48 h-48 rounded-full object-cover border-4 border-blue-500 shadow-lg"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        />
+        
 
         {/* Text & Skills */}
         <div className="flex-1 space-y-6">

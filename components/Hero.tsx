@@ -2,10 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
 import { Github, Download, Mail, Linkedin } from "lucide-react";
-import profilePic from "../public/profile/profile2.png";
-
 
 const roles = [
   "Full Stack Web Developer helping businesses and startups build modern, scalable, and high-performing web applications",
@@ -13,7 +10,7 @@ const roles = [
   "End-to-end development: frontend, backend, APIs, and deployment",
   "Specialized in MERN stack, Next.js, and OpenAI API integrations",
   "Passionate about clean code, responsive design, and intuitive UX",
-   "“I can build, deploy, and maintain real production applications."
+  "I can build, deploy, and maintain real production applications.",
 ];
 
 export default function Hero() {
@@ -39,25 +36,24 @@ export default function Hero() {
       }
     }, 55);
 
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
+    return () => timeoutRef.current && clearTimeout(timeoutRef.current);
   }, [charIndex, roleIndex, isPaused]);
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
+      {/* Profile Image */}
+      <motion.img
+        src="/profile/profile2.png"
+        alt="Mohammed Khan"
+        className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-blue-500 shadow-lg"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      />
+
       {/* Name */}
-       <motion.img
-                src="/profile/profile2.png"
-                alt="Mohammed Khan"
-                className="w-48 h-48 rounded-full object-cover border-4 border-blue-500 shadow-lg"
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-              />
       <motion.h1
-        className="text-4xl md:text-6xl font-bold"
+        className="mt-6 text-4xl md:text-6xl font-bold"
         initial={{ opacity: 0, y: -40, filter: "blur(8px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         transition={{ duration: 0.8 }}
@@ -65,9 +61,9 @@ export default function Hero() {
         Mohammed Khan
       </motion.h1>
 
-      {/* Static role */}
+      {/* Static Role */}
       <motion.p
-        className="mt-4 text-xl md:text-2xl text-gray-600 dark:text-gray-300"
+        className="mt-4 text-lg md:text-2xl text-gray-600 dark:text-gray-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
@@ -75,16 +71,16 @@ export default function Hero() {
         Full Stack Developer | MERN | Next.js | AI-Powered Apps
       </motion.p>
 
-      {/* Typing effect */}
+      {/* Typing Effect */}
       <motion.div
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
-        className="mt-6 h-14 flex items-center justify-center"
+        className="mt-6 h-16 flex items-center justify-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        <p className="text-lg md:text-2xl font-medium bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
+        <p className="text-base md:text-2xl font-medium bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
           {text}
           <span className="ml-1 animate-blink">|</span>
         </p>
@@ -97,6 +93,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9 }}
       >
+        {/* Always Visible */}
         <a
           href="#projects"
           className="px-6 py-3 rounded-xl bg-black text-white hover:bg-gray-800 transition"
@@ -105,53 +102,50 @@ export default function Hero() {
         </a>
 
         <a
-          href="https://github.com/MohammedKhan-star"
-          target="_blank"
-          className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-        >
-          <Github size={18} />
-          GitHub
-        </a>
-         <a
-          href="https://www.linkedin.com/in/mohammed-khan-7905a621a/"
-          target="_blank"
-          className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-        >
-          <Linkedin size={18} />
-          LinkedIn
-        </a>
-       <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammedkhan20019@gmail.com&su=Portfolio%20Inquiry&body=Hi%20Mohammed,%0A%0AI%20visited%20your%20portfolio%20and%20would%20like%20to%20connect."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-        >
-          <Mail size={18} />
-          Mail
-        </a>
-
-        
-      
-
-        <a
-          href="resume.pdf"
-          download
-          className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-        >
-          <Download size={18} />
-          Resume
-        </a>
-        <a
-          href="https://services-site-beta.vercel.app/"
+          href="https://services-site-9k66.vercel.app/"
           className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
         >
           <Mail size={18} />
           My Service
         </a>
-      </motion.div>
 
-      {/* Tech stack */}
-      
+        {/* Desktop Only */}
+        <a
+          href="https://github.com/MohammedKhan-star"
+          target="_blank"
+          className="hidden md:flex px-6 py-3 rounded-xl border items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+        >
+          <Github size={18} />
+          GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/mohammed-khan-7905a621a/"
+          target="_blank"
+          className="hidden md:flex px-6 py-3 rounded-xl border items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+        >
+          <Linkedin size={18} />
+          LinkedIn
+        </a>
+
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammedkhan20019@gmail.com"
+          target="_blank"
+          className="hidden md:flex px-6 py-3 rounded-xl border items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+        >
+          <Mail size={18} />
+          Mail
+        </a>
+
+        <a
+          href="/resume.pdf"
+          download
+          className="hidden md:flex px-6 py-3 rounded-xl border items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+        >
+          <Download size={18} />
+          Resume
+        </a>
+      </motion.div>
     </section>
   );
 }

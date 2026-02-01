@@ -21,6 +21,7 @@ export default function Home() {
        <main className="pt-24 space-y-24">
       <Hero />
       <About />
+      
       <Skills />
       <Experience />
       <Education /> {/* Add here */}

@@ -41,7 +41,7 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
-      {/* Profile Image */}
+      {/* Profile */}
       <motion.img
         src="/profile/profile2.png"
         alt="Mohammed Khan"
@@ -61,7 +61,7 @@ export default function Hero() {
         Mohammed Khan
       </motion.h1>
 
-      {/* Static Role */}
+      {/* Role */}
       <motion.p
         className="mt-4 text-lg md:text-2xl text-gray-600 dark:text-gray-300"
         initial={{ opacity: 0 }}
@@ -71,7 +71,7 @@ export default function Hero() {
         Full Stack Developer | MERN | Next.js | AI-Powered Apps
       </motion.p>
 
-      {/* Typing Effect */}
+      {/* Typing */}
       <motion.div
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -86,14 +86,30 @@ export default function Hero() {
         </p>
       </motion.div>
 
-      {/* CTA Buttons */}
+      {/* 🔥 MOBILE CTA (ONLY 2) */}
+      <div className="mt-10 flex gap-3 md:hidden">
+        <a
+          href="#projects"
+          className="px-5 py-3 rounded-xl bg-black text-white text-sm font-semibold"
+        >
+          View Projects
+        </a>
+
+        <a
+          href="https://services-site-project.vercel.app/"
+          className="px-5 py-3 rounded-xl border text-sm font-semibold"
+        >
+          My Service
+        </a>
+      </div>
+
+      {/* 💻 DESKTOP CTA (ALL) */}
       <motion.div
-        className="mt-10 flex flex-wrap justify-center gap-4"
+        className="hidden md:flex mt-10 flex-wrap justify-center gap-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9 }}
       >
-        {/* Always Visible */}
         <a
           href="#projects"
           className="px-6 py-3 rounded-xl bg-black text-white hover:bg-gray-800 transition"
@@ -103,47 +119,41 @@ export default function Hero() {
 
         <a
           href="https://services-site-project.vercel.app/"
-          className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
         >
-          <Mail size={18} />
-          My Service
+          <Mail size={18} /> My Service
         </a>
 
-        {/* Desktop Only */}
         <a
           href="https://github.com/MohammedKhan-star"
           target="_blank"
-          className="hidden md:flex px-6 py-3 rounded-xl border items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
         >
-          <Github size={18} />
-          GitHub
+          <Github size={18} /> GitHub
         </a>
 
         <a
           href="https://www.linkedin.com/in/mohammed-khan-7905a621a/"
           target="_blank"
-          className="hidden md:flex px-6 py-3 rounded-xl border items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
         >
-          <Linkedin size={18} />
-          LinkedIn
+          <Linkedin size={18} /> LinkedIn
         </a>
 
         <a
           href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammedkhan20019@gmail.com"
           target="_blank"
-          className="hidden md:flex px-6 py-3 rounded-xl border items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
         >
-          <Mail size={18} />
-          Mail
+          <Mail size={18} /> Mail
         </a>
 
         <a
           href="/resume.pdf"
           download
-          className="hidden md:flex px-6 py-3 rounded-xl border items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
         >
-          <Download size={18} />
-          Resume
+          <Download size={18} /> Resume
         </a>
       </motion.div>
     </section>

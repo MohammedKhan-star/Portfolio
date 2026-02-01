@@ -52,8 +52,8 @@ export default function Projects() {
               <Image
                 src={project.image}
                 alt={project.title}
-                width={600}
-                height={400}
+                width={500}
+                height={300}
                 className="w-full h-48 object-cover"
               />
 

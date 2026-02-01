@@ -102,7 +102,7 @@ export default function Hero() {
         </a>
 
         <a
-          href="https://services-site-9k66.vercel.app/"
+          href="https://services-site-project.vercel.app/"
           className="px-6 py-3 rounded-xl border flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
         >
           <Mail size={18} />

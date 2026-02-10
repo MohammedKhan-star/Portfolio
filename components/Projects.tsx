@@ -40,6 +40,7 @@ export default function Projects() {
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
               whileHover={{ y: -8, scale: 1.03 }}
+              whileTap={{scale:0.98}}
               className="
                 bg-white/90 dark:bg-gray-800/80
                 backdrop-blur-lg
@@ -49,13 +50,17 @@ export default function Projects() {
               "
             >
               {/* Project Image */}
+              <div className="relative w-full h-48">
               <Image
                 src={project.image}
                 alt={project.title}
-                width={500}
-                height={300}
-                className="w-full h-48 object-cover"
+                fill
+                sizes="(max-width:768px) 100vw, 33vw"
+              
+                className="object-cover"
+                priority={index ===0}
               />
+              </div>
 
               {/* Content */}
               <div className="p-6">

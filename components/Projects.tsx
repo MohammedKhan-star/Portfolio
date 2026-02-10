@@ -53,7 +53,7 @@ export default function Projects() {
                 src={project.image}
                 alt={project.title}
                 width={500}
-                height={300}
+                height={500}
                 className="w-full h-48 object-cover"
               />
 

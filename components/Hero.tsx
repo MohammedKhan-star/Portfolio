@@ -18,9 +18,7 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-
-  // ✅✅✅ FIXED LINE (IMPORTANT)
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (isPaused) return;
@@ -38,16 +36,126 @@ export default function Hero() {
       }
     }, 55);
 
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
+    return () => timeoutRef.current && clearTimeout(timeoutRef.current);
   }, [charIndex, roleIndex, isPaused]);
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
-      {/* Rest of your JSX remains SAME */}
+      {/* Profile */}
+      <motion.img
+        src="/profile/profile2.png"
+        alt="Mohammed Khan"
+        className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-blue-500 shadow-lg"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      />
+
+      {/* Name */}
+      <motion.h1
+        className="mt-6 text-4xl md:text-6xl font-bold"
+        initial={{ opacity: 0, y: -40, filter: "blur(8px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.8 }}
+      >
+        Mohammed Khan
+      </motion.h1>
+
+      {/* Role */}
+      <motion.p
+        className="mt-4 text-lg md:text-2xl text-gray-600 dark:text-gray-300"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+      >
+        Full Stack Developer | MERN | Next.js | AI-Powered Apps
+      </motion.p>
+
+      {/* Typing */}
+      <motion.div
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        className="mt-6 h-16 flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.6 }}
+      >
+        <p className="text-base md:text-2xl font-medium bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
+          {text}
+          <span className="ml-1 animate-blink">|</span>
+        </p>
+      </motion.div>
+
+      {/* 🔥 MOBILE CTA (ONLY 2) */}
+      <div className="mt-10 flex gap-3 md:hidden">
+        <a
+          href="#projects"
+          className="px-5 py-3 rounded-xl bg-black text-white text-sm font-semibold"
+        >
+          View Projects
+        </a>
+
+        <a
+          href="https://services-site-project.vercel.app/"
+          className="px-5 py-3 rounded-xl border text-sm font-semibold"
+        >
+          My Service
+        </a>
+      </div>
+
+      {/* 💻 DESKTOP CTA (ALL) */}
+      <motion.div
+        className="hidden md:flex mt-10 flex-wrap justify-center gap-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9 }}
+      >
+        <a
+          href="#projects"
+          className="px-6 py-3 rounded-xl bg-black text-white hover:bg-gray-800 transition"
+        >
+          View Projects
+        </a>
+
+        <a
+          href="https://services-site-project.vercel.app/"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+        >
+          <Mail size={18} /> My Service
+        </a>
+
+        <a
+          href="https://github.com/MohammedKhan-star"
+          target="_blank"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+        >
+          <Github size={18} /> GitHub
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/mohammed-khan-7905a621a/"
+          target="_blank"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+        >
+          <Linkedin size={18} /> LinkedIn
+        </a>
+
+        <a
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammedkhan20019@gmail.com"
+          target="_blank"
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+        >
+          <Mail size={18} /> Mail
+        </a>
+
+        <a
+          href="/resume.pdf"
+          download
+          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+        >
+          <Download size={18} /> Resume
+        </a>
+      </motion.div>
     </section>
   );
 }

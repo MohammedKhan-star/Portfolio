@@ -18,7 +18,8 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (isPaused) return;
@@ -28,7 +29,7 @@ export default function Hero() {
         setText((prev) => prev + roles[roleIndex][charIndex]);
         setCharIndex((prev) => prev + 1);
       } else {
-        setTimeout(() => {
+        timeoutRef.current = setTimeout(() => {
           setText("");
           setCharIndex(0);
           setRoleIndex((prev) => (prev + 1) % roles.length);
@@ -36,12 +37,16 @@ export default function Hero() {
       }
     }, 55);
 
-    return () => timeoutRef.current && clearTimeout(timeoutRef.current);
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, [charIndex, roleIndex, isPaused]);
 
   return (
     <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center">
-      {/* Profile */}
+      {/* Profile Image */}
       <motion.img
         src="/profile/profile3.jpeg"
         alt="Mohammed Khan"
@@ -52,35 +57,37 @@ export default function Hero() {
       />
 
       {/* Name */}
-     {/* Name */}
-<motion.h1
-  className="mt-6 text-4xl tracking-wide text-transparent font-extra-italic md:text-6xl lg:text-7xl bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text drop-shadow-lg"
-  initial={{ opacity: 0, y: -40, filter: "blur(8px)" }}
-  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-  transition={{ duration: 0.8 }}
->
-  Mohammed Khan
-</motion.h1>
+      <motion.h1
+        className="mt-6 text-4xl italic tracking-wide text-transparent md:text-6xl lg:text-7xl bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text drop-shadow-lg"
+        initial={{ opacity: 0, y: -40, filter: "blur(8px)" }}
+        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.8 }}
+      >
+        Mohammed Khan
+      </motion.h1>
 
-      {/* Role */}
+      {/* Title */}
       <motion.p
         className="mt-4 text-lg text-gray-600 md:text-2xl dark:text-gray-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
       >
-       Software Engineer | Full Stack Developer | MERN | Next.js | AI-Powered Apps
-      </motion.p>
-      <motion.p
-        className="mt-4 text-lg text-gray-600 md:text-2xl dark:text-gray-300"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-      >
-       Founder of STACKRA TECHNOLOGIES Software Web & AI Solutions
+        Software Engineer | Full Stack Developer | MERN | Next.js |
+        AI-Powered Apps
       </motion.p>
 
-      {/* Typing */}
+      {/* Company */}
+      <motion.p
+        className="mt-2 text-base text-gray-500 md:text-xl dark:text-gray-400"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+      >
+        Founder of STACKRA TECHNOLOGIES | Software • Web • AI Solutions
+      </motion.p>
+
+      {/* Typing Animation */}
       <motion.div
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -91,28 +98,30 @@ export default function Hero() {
       >
         <p className="text-base font-medium text-transparent md:text-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 bg-clip-text">
           {text}
-          <span className="ml-1 animate-blink">|</span>
+          <span className="ml-1 animate-pulse">|</span>
         </p>
       </motion.div>
 
-      {/* 🔥 MOBILE CTA (ONLY 2) */}
+      {/* Mobile Buttons */}
       <div className="flex gap-3 mt-10 md:hidden">
         <a
           href="#projects"
-          className="px-5 py-3 text-sm font-semibold text-white bg-black rounded-xl"
+          className="px-5 py-3 text-sm font-semibold text-white transition bg-black rounded-xl hover:bg-gray-800"
         >
           View Projects
         </a>
 
         <a
           href="https://services-site-project.vercel.app/"
-          className="px-5 py-3 text-sm font-semibold border rounded-xl"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-5 py-3 text-sm font-semibold transition border rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"
         >
           My Service
         </a>
       </div>
 
-      {/* 💻 DESKTOP CTA (ALL) */}
+      {/* Desktop Buttons */}
       <motion.div
         className="flex-wrap justify-center hidden gap-4 mt-10 md:flex"
         initial={{ opacity: 0, y: 20 }}
@@ -128,41 +137,51 @@ export default function Hero() {
 
         <a
           href="https://services-site-project.vercel.app/"
-          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-3 transition border rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"
         >
-          <Mail size={18} /> My Service
+          <Mail size={18} />
+          My Service
         </a>
 
         <a
           href="https://github.com/MohammedKhan-star"
           target="_blank"
-          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-3 transition border rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"
         >
-          <Github size={18} /> GitHub
+          <Github size={18} />
+          GitHub
         </a>
 
         <a
           href="https://www.linkedin.com/in/mohammed-khan-7905a621a/"
           target="_blank"
-          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-3 transition border rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"
         >
-          <Linkedin size={18} /> LinkedIn
+          <Linkedin size={18} />
+          LinkedIn
         </a>
 
         <a
           href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammedkhan20019@gmail.com"
           target="_blank"
-          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 px-6 py-3 transition border rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"
         >
-          <Mail size={18} />G-Mail
+          <Mail size={18} />
+          G-Mail
         </a>
 
         <a
           href="/resume.pdf"
           download
-          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
+          className="flex items-center gap-2 px-6 py-3 transition border rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"
         >
-          <Download size={18} /> Resume
+          <Download size={18} />
+          Resume
         </a>
       </motion.div>
     </section>

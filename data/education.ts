@@ -7,6 +7,13 @@ export const education = [
     details: "Currently pursuing MCA with focus on Full Stack Development, AI Integration, and Web Technologies."
   },
   {
+    logo:"/edu/nxt.png",
+    degree: "Full Stack Developement",
+    institute: "NxtWave Disruptive Technologies Private Limited",
+    duration: "2022 - 2025",
+    details: "Full Stack Development, AI Integration, and Web Technologies."
+  },
+  {
     logo:"/edu/osmania.jpg",
     degree: "Bachelor of Science (B.Sc.) in Computer Science",
     institute: "Osmania University",

@@ -40,64 +40,73 @@ export default function Hero() {
   }, [charIndex, roleIndex, isPaused]);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
+    <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center">
       {/* Profile */}
       <motion.img
-        src="/profile/profile2.png"
+        src="/profile/profile3.jpeg"
         alt="Mohammed Khan"
-        className="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-blue-500 shadow-lg"
+        className="object-cover w-40 h-40 border-4 border-blue-500 rounded-full shadow-lg md:w-48 md:h-48"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       />
 
       {/* Name */}
-      <motion.h1
-        className="mt-6 text-4xl md:text-6xl font-bold"
-        initial={{ opacity: 0, y: -40, filter: "blur(8px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ duration: 0.8 }}
-      >
-        Mohammed Khan
-      </motion.h1>
+     {/* Name */}
+<motion.h1
+  className="mt-6 text-4xl tracking-wide text-transparent font-extra-italic md:text-6xl lg:text-7xl bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text drop-shadow-lg"
+  initial={{ opacity: 0, y: -40, filter: "blur(8px)" }}
+  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+  transition={{ duration: 0.8 }}
+>
+  Mohammed Khan
+</motion.h1>
 
       {/* Role */}
       <motion.p
-        className="mt-4 text-lg md:text-2xl text-gray-600 dark:text-gray-300"
+        className="mt-4 text-lg text-gray-600 md:text-2xl dark:text-gray-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
       >
-        Full Stack Developer | MERN | Next.js | AI-Powered Apps
+       Software Engineer | Full Stack Developer | MERN | Next.js | AI-Powered Apps
+      </motion.p>
+      <motion.p
+        className="mt-4 text-lg text-gray-600 md:text-2xl dark:text-gray-300"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+      >
+       Founder of STACKRA TECHNOLOGIES Software Web & AI Solutions
       </motion.p>
 
       {/* Typing */}
       <motion.div
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
-        className="mt-6 h-16 flex items-center justify-center"
+        className="flex items-center justify-center h-16 mt-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        <p className="text-base md:text-2xl font-medium bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 bg-clip-text text-transparent">
+        <p className="text-base font-medium text-transparent md:text-2xl bg-gradient-to-r from-purple-500 via-pink-500 to-indigo-500 bg-clip-text">
           {text}
           <span className="ml-1 animate-blink">|</span>
         </p>
       </motion.div>
 
       {/* 🔥 MOBILE CTA (ONLY 2) */}
-      <div className="mt-10 flex gap-3 md:hidden">
+      <div className="flex gap-3 mt-10 md:hidden">
         <a
           href="#projects"
-          className="px-5 py-3 rounded-xl bg-black text-white text-sm font-semibold"
+          className="px-5 py-3 text-sm font-semibold text-white bg-black rounded-xl"
         >
           View Projects
         </a>
 
         <a
           href="https://services-site-project.vercel.app/"
-          className="px-5 py-3 rounded-xl border text-sm font-semibold"
+          className="px-5 py-3 text-sm font-semibold border rounded-xl"
         >
           My Service
         </a>
@@ -105,21 +114,21 @@ export default function Hero() {
 
       {/* 💻 DESKTOP CTA (ALL) */}
       <motion.div
-        className="hidden md:flex mt-10 flex-wrap justify-center gap-4"
+        className="flex-wrap justify-center hidden gap-4 mt-10 md:flex"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9 }}
       >
         <a
           href="#projects"
-          className="px-6 py-3 rounded-xl bg-black text-white hover:bg-gray-800 transition"
+          className="px-6 py-3 text-white transition bg-black rounded-xl hover:bg-gray-800"
         >
           View Projects
         </a>
 
         <a
           href="https://services-site-project.vercel.app/"
-          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
         >
           <Mail size={18} /> My Service
         </a>
@@ -127,7 +136,7 @@ export default function Hero() {
         <a
           href="https://github.com/MohammedKhan-star"
           target="_blank"
-          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
         >
           <Github size={18} /> GitHub
         </a>
@@ -135,7 +144,7 @@ export default function Hero() {
         <a
           href="https://www.linkedin.com/in/mohammed-khan-7905a621a/"
           target="_blank"
-          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
         >
           <Linkedin size={18} /> LinkedIn
         </a>
@@ -143,15 +152,15 @@ export default function Hero() {
         <a
           href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammedkhan20019@gmail.com"
           target="_blank"
-          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
         >
-          <Mail size={18} /> Mail
+          <Mail size={18} />G-Mail
         </a>
 
         <a
           href="/resume.pdf"
           download
-          className="px-6 py-3 rounded-xl border flex items-center gap-2"
+          className="flex items-center gap-2 px-6 py-3 border rounded-xl"
         >
           <Download size={18} /> Resume
         </a>

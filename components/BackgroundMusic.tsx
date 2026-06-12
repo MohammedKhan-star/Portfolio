@@ -27,7 +27,7 @@ export default function BackgroundMusic() {
 
   return (
     <audio ref={audioRef} loop>
-      <source src="/music/background4.mp3" type="audio/mpeg" />
+      <source src="/music/background6.mp3" type="audio/mpeg" />
     </audio>
   );
 }

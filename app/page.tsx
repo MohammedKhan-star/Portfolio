@@ -8,6 +8,7 @@ import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import type { Metadata } from "next";
 import BackgroundMusic from "@/components/BackgroundMusic";
+import Certificates from "@/components/Certificates";
 
 import { Analytics } from "@vercel/analytics/next";
 
@@ -19,7 +20,9 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+
       <BackgroundMusic />
+     
       <Navbar />
        <main className="pt-24 space-y-24">
       <Hero />
@@ -28,6 +31,7 @@ export default function Home() {
       <Skills />
       <Experience />
       <Education /> {/* Add here */}
+      <Certificates />
       <Projects />
       <Contact />
       </main>

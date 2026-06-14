@@ -50,7 +50,7 @@ export default function Projects() {
               "
             >
               {/* Project Image */}
-              <div className="relative w-full h-48">
+              <div className="relative w-full h-50">
               <Image
                 src={project.image}
                 alt={project.title}

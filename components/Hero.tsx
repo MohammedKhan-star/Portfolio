@@ -136,7 +136,7 @@ export default function Hero() {
         </a>
 
         <a
-          href="https://stackratechnologies.mohammedkhan.dev/"
+          href="https://www.stackratechnologies.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 px-6 py-3 transition border rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"

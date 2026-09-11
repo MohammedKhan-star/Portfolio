@@ -112,7 +112,7 @@ export default function Hero() {
         </a>
 
         <a
-          href="https://services-site-project.vercel.app/"
+          href="https://www.stackratechnologies.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="px-5 py-3 text-sm font-semibold transition border rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800"

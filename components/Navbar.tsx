@@ -1,135 +1,338 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Sun, Moon, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+
+const navItems = [
+  {
+    name: "About",
+    href: "#about",
+  },
+  {
+    name: "Services",
+    href: "#services",
+  },
+  {
+    name: "Work",
+    href: "#projects",
+  },
+  {
+    name: "Journey",
+    href: "#experience",
+  },
+  {
+    name: "Contact",
+    href: "#contact",
+  },
+];
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const navLinks = [
-    { label: "Home", href: "#" },
-    { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Experience", href: "#experience" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
-  ];
-
-  if (!mounted) return null;
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <nav
-      className="
-        fixed top-0 w-full z-50
-        bg-white/80 dark:bg-gray-900/80
-        backdrop-blur-lg
-        border-b border-gray-200/50 dark:border-gray-800/50
-      "
-    >
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <span className="text-xl font-bold tracking-wide text-gray-900 dark:text-white">
-          Mohammed Khan
-        </span>
+    <header className="fixed left-0 right-0 top-0 z-50">
+      <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+        <nav
+          className="
+            flex min-h-[68px] items-center justify-between
+            rounded-2xl
+            border border-black/10
+            bg-white/90
+            px-4
+            shadow-lg shadow-black/5
+            backdrop-blur-xl
+            dark:border-white/10
+            dark:bg-black/85
+            sm:px-6
+          "
+        >
+          {/* Brand */}
+          <a
+            href="#home"
+            onClick={closeMenu}
+            className="group flex items-center gap-3"
+          >
+            {/* Logo Mark */}
+            <div
+              className="
+                flex h-10 w-10 shrink-0
+                items-center justify-center
+                rounded-xl
+                bg-black
+                text-sm font-bold
+                tracking-tight
+                text-white
+                transition-transform
+                group-hover:scale-105
+                dark:bg-white
+                dark:text-black
+              "
+            >
+              MK
+            </div>
 
-        {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
-          {navLinks.map((link) => (
-            <li key={link.label}>
+            {/* Brand Text */}
+            <div className="hidden sm:block">
+              <div className="text-sm font-bold tracking-tight text-gray-950 dark:text-white">
+                MOHAMMED KHAN
+              </div>
+
+              <div className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400">
+                Founder · STACKRA TECHNOLOGIES
+              </div>
+            </div>
+
+            {/* Mobile Brand */}
+            <div className="sm:hidden">
+              <div className="text-sm font-bold tracking-tight text-gray-950 dark:text-white">
+                MOHAMMED KHAN
+              </div>
+
+              <div className="text-[9px] font-medium uppercase tracking-[0.12em] text-gray-500 dark:text-gray-400">
+                Founder · STACKRA
+              </div>
+            </div>
+          </a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-1 lg:flex">
+            {navItems.map((item) => (
               <a
-                href={link.href}
+                key={item.name}
+                href={item.href}
                 className="
-                  text-gray-700 dark:text-gray-300
-                  hover:text-blue-600 dark:hover:text-blue-400
+                  rounded-lg
+                  px-3.5 py-2
+                  text-sm font-medium
+                  text-gray-600
                   transition-colors
+                  hover:bg-black/5
+                  hover:text-black
+                  dark:text-gray-300
+                  dark:hover:bg-white/10
+                  dark:hover:text-white
                 "
               >
-                {link.label}
+                {item.name}
               </a>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
 
-        {/* Actions */}
-        <div className="flex items-center gap-2">
-          {/* Theme Toggle */}
-          <button
-            aria-label="Toggle Theme"
-            onClick={() =>
-              setTheme(theme === "light" ? "dark" : "light")
-            }
-            className="
-              p-2 rounded-lg border
-              border-gray-300 dark:border-gray-700
-              hover:bg-gray-200 dark:hover:bg-gray-700
-              transition
-            "
-          >
-            {theme === "light" ? (
-              <Moon size={18} />
-            ) : (
-              <Sun size={18} />
-            )}
-          </button>
+          {/* Desktop Actions */}
+          <div className="hidden items-center gap-2 lg:flex">
+            {/* STACKRA */}
+            <a
+              href="https://stackratechnologies.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                group
+                inline-flex items-center gap-1
+                rounded-lg
+                px-3 py-2
+                text-sm font-semibold
+                text-gray-700
+                transition-colors
+                hover:text-black
+                dark:text-gray-300
+                dark:hover:text-white
+              "
+            >
+              STACKRA
+
+              <ArrowUpRight
+                size={14}
+                className="
+                  transition-transform
+                  group-hover:-translate-y-0.5
+                  group-hover:translate-x-0.5
+                "
+              />
+            </a>
+
+            {/* Academy */}
+            <a
+              href="https://stackratechnologies.com/academy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                group
+                inline-flex items-center gap-1
+                rounded-lg
+                px-3 py-2
+                text-sm font-semibold
+                text-gray-700
+                transition-colors
+                hover:text-black
+                dark:text-gray-300
+                dark:hover:text-white
+              "
+            >
+              Academy
+
+              <ArrowUpRight
+                size={14}
+                className="
+                  transition-transform
+                  group-hover:-translate-y-0.5
+                  group-hover:translate-x-0.5
+                "
+              />
+            </a>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              className="
+                inline-flex items-center gap-2
+                rounded-xl
+                bg-black
+                px-4 py-2.5
+                text-sm font-semibold
+                text-white
+                shadow-sm
+                transition-all
+                hover:-translate-y-0.5
+                hover:shadow-lg
+                dark:bg-white
+                dark:text-black
+              "
+            >
+              Start a Project
+              <ArrowUpRight size={15} />
+            </a>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
-            aria-label="Toggle Menu"
+            type="button"
+            aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isOpen}
+            onClick={() => setIsOpen(!isOpen)}
             className="
-              md:hidden p-2 rounded-lg border
-              border-gray-300 dark:border-gray-700
-              hover:bg-gray-200 dark:hover:bg-gray-700
-              transition
+              rounded-xl
+              p-2
+              text-gray-900
+              transition-colors
+              hover:bg-black/5
+              dark:text-white
+              dark:hover:bg-white/10
+              lg:hidden
             "
-            onClick={() => setMenuOpen((prev) => !prev)}
           >
-            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+            {isOpen ? <X size={23} /> : <Menu size={23} />}
           </button>
-        </div>
-      </div>
+        </nav>
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.25 }}
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div
             className="
-              md:hidden
-              bg-white dark:bg-gray-900
-              border-t border-gray-200 dark:border-gray-800
+              mt-2
+              overflow-hidden
+              rounded-2xl
+              border border-black/10
+              bg-white/95
+              p-3
+              shadow-xl
+              backdrop-blur-xl
+              dark:border-white/10
+              dark:bg-black/95
+              lg:hidden
             "
           >
-            <ul className="flex flex-col px-6 py-4 gap-4">
-              {navLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="
-                      block text-gray-700 dark:text-gray-300
-                      hover:text-blue-600 dark:hover:text-blue-400
-                      transition-colors
-                    "
-                  >
-                    {link.label}
-                  </a>
-                </li>
+            {/* Navigation */}
+            <div className="space-y-1">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  onClick={closeMenu}
+                  className="
+                    block
+                    rounded-xl
+                    px-4 py-3
+                    text-sm font-medium
+                    text-gray-700
+                    transition-colors
+                    hover:bg-black/5
+                    hover:text-black
+                    dark:text-gray-300
+                    dark:hover:bg-white/10
+                    dark:hover:text-white
+                  "
+                >
+                  {item.name}
+                </a>
               ))}
-            </ul>
-          </motion.div>
+            </div>
+
+            <div className="my-3 h-px bg-black/10 dark:bg-white/10" />
+
+            {/* STACKRA */}
+            <a
+              href="https://stackratechnologies.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="
+                flex items-center justify-between
+                rounded-xl
+                px-4 py-3
+                text-sm font-semibold
+                text-gray-800
+                dark:text-white
+              "
+            >
+              STACKRA TECHNOLOGIES
+              <ArrowUpRight size={17} />
+            </a>
+
+            {/* Academy */}
+            <a
+              href="https://stackratechnologies.com/academy"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
+              className="
+                flex items-center justify-between
+                rounded-xl
+                px-4 py-3
+                text-sm font-semibold
+                text-gray-800
+                dark:text-white
+              "
+            >
+              STACKRA Academy
+              <ArrowUpRight size={17} />
+            </a>
+
+            {/* Mobile CTA */}
+            <a
+              href="#contact"
+              onClick={closeMenu}
+              className="
+                mt-2
+                flex items-center justify-center gap-2
+                rounded-xl
+                bg-black
+                px-4 py-3
+                text-sm font-semibold
+                text-white
+                dark:bg-white
+                dark:text-black
+              "
+            >
+              Start a Project
+              <ArrowUpRight size={17} />
+            </a>
+          </div>
         )}
-      </AnimatePresence>
-    </nav>
+      </div>
+    </header>
   );
 }
